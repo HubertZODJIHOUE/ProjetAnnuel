@@ -1,19 +1,66 @@
-<nav class="navbar  fixed-top ">
-  <!--  <a class="navbar-brand nava">DOCKERIZE</a>-->
-  <img src="" class="img">
-  <a class=" nava">Home</a>
-  <a class=" nava">Mes Préférences</a>
-  <!--  <form class="form-inline" >-->
-  <!--    <div class=" d-flex  mx-4">-->
-  <!--      <input class="form-control mx-4 mr-sm-2 mr-3" type="search" placeholder="Search" aria-label="Search" name="search" [(ngModel)]="search">-->
-  <!--      <button type="submit" class="btn btn-primary   " (click)="onClickSearch()" >valider</button>-->
+<nav class="navbar navbar-expand-xl navbar-light fixed-top">
+  <a class="navbar-brand" href="#"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
 
-  <!--    </div>-->
-  <!--  </form>-->
-  <button type="button" class="btn  btn-primary"> Ajouter un Livre</button>
-  <button type="button" class="btn  btn-danger"> Deconnexion</button>
-  <button class="btn  btn-success"> Se connecter</button>
+      <li class="nav-item active">
+
+        <a class="nav-link" href="#"> <i class="fa fa-home fa-lg"></i> Acceuil </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="#">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="">Mes evenements</a>
+      </li>
+      <!-- <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          Dropdown link
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li> -->
+
+      <li class="dropdown">
+        <a href="#">Actions</a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Signalement</a></li>
+          <li><a href="#">Quizz</a></li>
+          <li><a href="#">Comparateur</a></li>
+        </ul>
+      </li>
+    </ul>
+
+
+  </div>
+  <div class="mt-1 mr-5">
+
+    <form class=" d-flex align-items-center mr-5">
+      <input class="form-control  custom-input mx-3 " type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-success mr-3 " type="submit">Rechercher </button>
+    </form>
+
+  </div>
+
+  <div class="connexion mt-2">
+    <ul class="mr-3 ">
+      <li class="mr-3">
+        <a class="nav-link" [routerLink]="['/Login']" (click)="con()"><i class="fa fa-sign-in"></i> Se Connecter </a>
+      </li>
+    </ul>
+  </div>
+
+
+
 </nav>
 
-
-<div><router-outlet></router-outlet></div>s
+<router-outlet></router-outlet>
