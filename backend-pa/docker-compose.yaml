@@ -1,0 +1,25 @@
+version: '3'
+services:
+
+  ecologiedatabase:
+    image: mysql:latest
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=ecologie
+      - MYSQL_DATABASE=ecologie
+      - MYSQL_PASSWORD=ecologied
+    ports:
+      - "3334:3306"
+
+  phpmyadminforecologiedb:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8081:80"
+    depends_on:
+      - ecologiedatabase
+
+    environment:
+      PMA_HOST: ecologiedatabase
+      MYSQL_ROOT_PASSWORD: ecologie
+      MYSQL_USER: root
+      MYSQL_PASSWORD: ecologie
