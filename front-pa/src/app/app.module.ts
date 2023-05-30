@@ -7,12 +7,14 @@ import { LoginComponent } from './login/login.component';
 import { RouterModule } from '@angular/router';
 import {ReactiveFormsModule, FormsModule} from "@angular/forms";
 import { SimulationComponent } from './simulation/simulation.component';
+import { CreateAccountComponent } from './create-account/create-account.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    SimulationComponent
+    SimulationComponent,
+    CreateAccountComponent
   ],
   imports: [
     BrowserModule,
@@ -26,6 +28,7 @@ import { SimulationComponent } from './simulation/simulation.component';
       {path: 'Login', component: LoginComponent},
       {path: 'Comparateur', component: SimulationComponent},
       {path: 'Acceuil', component: AppComponent},
+      {path: 'CreerUnCompte', component: CreateAccountComponent},
     ]),
   ],
   providers: [],

@@ -30,18 +30,18 @@
                             <p class="text-muted">Connectez-vous à votre compte</p>
                             <label class=" mb-2">Nom utilisateur</label>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Nom utilisateur" name="username">
+                                <input type="text" class="form-control" placeholder="Nom utilisateur" name="username" [(ngModel)]="username">
                             </div>
                             <label class=" mb-2">Mot de pass</label>
                             <div class="input-group mb-4">
-                                <input type="password" class="form-control" placeholder="Mot de pass" name="password">
+                                <input type="password" class="form-control" placeholder="Mot de pass" name="password" [(ngModel)]="password">
                             </div>
-                            <div class="text-danger mb-3">Mot de passe ou nom
+                            <div class="text-danger mb-3" *ngIf="error">Mot de passe ou nom
                                 utiisateur incorrect.
                             </div>
                             <div class="row">
                                 <div class="col-6">
-                                    <button type="button" class="btn btn-success px-4">Connexion</button>
+                                    <button type="button" class="btn btn-success px-4" (click)="onClickToConnect()">Connexion</button>
                                 </div>
 
                                 <div class="col-6 text-right">
