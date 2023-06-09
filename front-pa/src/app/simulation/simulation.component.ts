@@ -11,6 +11,7 @@ export class SimulationComponent  implements  OnInit{
   simulationForm!: FormGroup
   public lesPays: string[]= [];
   public filteredCountry: string[]= [];
+  public launchSimulation : boolean = false
   constructor(private  fb: FormBuilder , private simulationService : SimulationServiceService) {
   }
   ngOnInit(): void {
@@ -62,6 +63,6 @@ export class SimulationComponent  implements  OnInit{
   }
 
   valider() {
-
+    this.launchSimulation = true
   }
 }

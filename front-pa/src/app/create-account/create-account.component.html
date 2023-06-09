@@ -10,7 +10,7 @@
             </a>
             <div class="row gutters">
               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                <label class="mb-2">Prenoms</label>
+                <label class="mb-2">Prénoms</label>
                 <div class="form-group mb-3">
                   <input type="text" class="form-control" placeholder="Prenoms" formControlName="Prenoms">
 <!--                  <div class="invalid-feedback"><span *ngIf="createAcountUser.get('Prenoms').pristine && createAcountUser.get('Prenoms').touched ">Entrez un prénom vaide</span></div>-->
@@ -24,6 +24,8 @@
 <!--                  <div class="invalid-feedback"><span *ngIf="createAcountUser.get('nom').pristine && createAcountUser.get('nom').touched">Entrez un nom vaide</span></div>-->
                 </div>
               </div>
+
+
               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                 <label class="mb-2">Email</label>
                 <div class="form-group mb-3 ">
@@ -41,10 +43,32 @@
                 </div>
               </div>
 
+
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                <label class="mb-2">Nom utilisateur</label>
+                <div class="form-group mb-3 ">
+                  <input type="email" class="form-control" placeholder="Nom utilisateur" formControlName="Username">
+                  <!--                         [ngClass]="{'is-invalid': createAcountUser.get('email').errors && createAcountUser.get('email').touched }">-->
+                  <!--                  <div class="invalid-feedback"><span  *ngIf="createAcountUser.get('email').errors && createAcountUser.get('email').touched">Entrez un email vaide</span></div>-->
+                </div>
+              </div>
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                <label class="mb-2">Comfirmer mot de passe</label>
+                <div class="form-group mb-3 ">
+                  <input type="password" class="form-control" placeholder="Mot de passe" formControlName="confirPassword">
+                  <!--                         [ngClass]="{'is-invalid':createAcountUser.get('password').pristine && createAcountUser.get('password').touched}">-->
+                  <!--                  <div class="invalid-feedback"><span  *ngIf="createAcountUser.get('password').pristine && createAcountUser.get('password').touched">Entrez un Mot de passe  valide</span></div>-->
+                </div>
+              </div>
+
+
+
+
+
               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12  mt-3 mb-3" >
 
                 <div class="form-group mb-3 ">
-                  <button type="submit" class="btn btn-primary btn-block col-12 mt-2" >Creer un compte</button>
+                  <button type="submit" class="btn btn-primary btn-block col-12 mt-2" (click)="onCreateAccount()">Creer un compte</button>
 
                 </div>
               </div>

@@ -2,8 +2,7 @@
 
 <br>
 <br>
-<br>
-<br>
+
 <br>
 <br>
 
@@ -19,13 +18,13 @@
         <div class="card h-100">
           <div class="card-body">
             <div class="row gutters">
-              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 title">
                 <h2 class="mb-2 text-primary text-center">Simuler l'mpact carbonne de votre produit</h2>
               </div>
               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                 <div class="form-group">
                   <label for="eMail">Produit</label>
-                  <input type="email" class="form-control" id="eMail" placeholder="Enter email ID" formControlName="produit" >
+                  <input type="dropdown" class="form-control" id="eMail" placeholder="Exemple: Tshirt" formControlName="produit" >
                 </div>
               </div>
               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
@@ -112,21 +111,19 @@
           </div>
         </div>
       </div>
-      <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 resultsimulation">
+      <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 resultsimulation" *ngIf="launchSimulation">
         <div class="card h-100">
           <div class="card-body">
             <div class="account-settings">
-              <div class="user-profile">
-                <div class="user-avatar">
-                  <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Maxwell Admin">
-                </div>
-                <h5 class="user-name">Yuki Hayashi</h5>
-                <h6 class="user-email">yuki@Maxwell.com</h6>
-              </div>
+
               <div class="about">
-                <h5>About</h5>
-                <p>I'm Yuki. Full Stack Designer I enjoy creating user-centric, delightful and human
-                  experiences.</p>
+                <h5>Description du resultat</h5>
+                <p>Le score PEP (Potentiel Écotoxique et Persistant) est un indicateur utilisé dans le domaine de l'écologie pour évaluer l'impact potentiel d'un produit chimique sur l'environnement. Il s'agit d'une mesure qui prend en compte à la fois l'écotoxicité et la persistance d'une substance chimique</p>
+              </div>
+
+              <div class="user-profile">
+                <i class="fa fa-refresh fa-spin fa-3x fa-fw"></i>
+                <span class="sr-only">Loading...</span>
               </div>
             </div>
           </div>
