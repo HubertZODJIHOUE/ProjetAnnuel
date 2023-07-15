@@ -1,0 +1,157 @@
+
+
+
+<br><br><br>
+<div class="container">
+  <h4> Signalement de dechet</h4>
+<!--  <form action="#" [formGroup]="createSignalement" >-->
+<!--    <div class="row justify-content-md-center">-->
+<!--      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">-->
+<!--        <div class="login-screen">-->
+<!--          <div class="login-box">-->
+<!--            <div class="row gutters">-->
+
+<!--              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">-->
+<!--                <label class="mb-2">Localisation</label>-->
+<!--                <div class="form-group mb-3 ">-->
+<!--                  <input type="email" class="form-control" placeholder="Localistion" formControlName="localisation">-->
+<!--                  &lt;!&ndash;                         [ngClass]="{'is-invalid': createAcountUser.get('email').errors && createAcountUser.get('email').touched }">&ndash;&gt;-->
+<!--                  &lt;!&ndash;                  <div class="invalid-feedback"><span  *ngIf="createAcountUser.get('email').errors && createAcountUser.get('email').touched">Entrez un email vaide</span></div>&ndash;&gt;-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">-->
+<!--                <label class="mb-2">Photo</label>-->
+<!--                <div class="form-group mb-3 ">-->
+<!--                  <input type="file" class="form-control" placeholder="Mot de passe" formControlName="image">-->
+<!--                  &lt;!&ndash;                         [ngClass]="{'is-invalid':createAcountUser.get('password').pristine && createAcountUser.get('password').touched}">&ndash;&gt;-->
+<!--                  &lt;!&ndash;                  <div class="invalid-feedback"><span  *ngIf="createAcountUser.get('password').pristine && createAcountUser.get('password').touched">Entrez un Mot de passe  valide</span></div>&ndash;&gt;-->
+<!--                </div>-->
+<!--              </div>-->
+
+
+
+<!--              <label class="mb-2">Type de déchet</label>-->
+<!--              <div class="dropdown mb-2">-->
+<!--                <select class="form-select" [(ngModel)]="selectedOption" (change)="launchAction(selectedOption)">-->
+<!--                  <label value="" disabled  hidden >Sélectionnez le type de déchet</label>-->
+<!--                  <option value="1">Plastique</option>-->
+<!--                  <option value="2">Verre</option>-->
+<!--                  <option value="3">Métal</option>-->
+<!--                  <option value="4">Métal</option>-->
+<!--                  <option value="5">Organique</option>-->
+<!--                </select>-->
+<!--              </div>-->
+<!--              <div class="form-group" mt-2 >-->
+<!--                <label for="exampleFormControlTextarea1" class="mb-2">Description</label>-->
+<!--                <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Description" rows="3" formControlName="description"></textarea>-->
+<!--              </div>-->
+
+
+
+<!--              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12  mt-3 mb-3" >-->
+
+<!--                <div class="form-group mb-3 ">-->
+<!--                  <button type="submit" class="btn btn-primary btn-block col-12 mt-2">Valider signalement</button>-->
+
+<!--                </div>-->
+<!--              </div>-->
+
+<!--              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">-->
+
+<!--                <div class="form-group mb-3 ">-->
+<!--                  <button type="submit" class="btn btn-light btn-block   col-12 mt-2" >Annuler signalement</button>-->
+
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+
+<!--            <div class="row gutters">-->
+<!--              <div class="col-12 text-center d-flex justify-content-center justify-content-between ">-->
+<!--              </div>-->
+<!--            </div>-->
+
+
+
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </form>-->
+  <form [formGroup]="createSignalement">
+    <div class="row justify-content-md-center">
+      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+        <div class="login-screen">
+          <div class="login-box">
+            <div class="row gutters">
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                <label class="mb-2">Localisation</label>
+                <div class="form-group mb-3">
+                  <input type="text" class="form-control" placeholder="Localisation" formControlName="localisation">
+                  <!-- <div class="invalid-feedback" *ngIf="createSignalement.get('localisation').errors && createSignalement.get('localisation').touched">Entrez une localisation valide</div> -->
+                </div>
+              </div>
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                <div class="form-group mb-3">
+                  <label class="mb-2">Photo</label>
+                  <div>
+                    <button type="button" class="btn btn-light" (click)="capturePhoto()">Prendre une photo</button>
+                    <input type="file" class="form-control" formControlName="image" accept="image/*" (change)="onImageChange($event)">
+                    <canvas #canvas style="display: none;"></canvas>
+                  </div>
+                </div>
+
+                <button type="button" class="btn btn-primary" (click)="takeSnapshot()">Capturer la photo</button>
+                <i class="fa fa-camera" aria-hidden="true" (click)="capturePhoto()" ></i>
+
+                <!--                <img [src]="createSignalement.get('image')?.value" alt="Image capturée">-->
+
+                <img *ngIf="createSignalement.get('image')?.value" [src]="imaz" alt="Image capturée">
+
+              </div>
+              <div class="col-12 mb-3">{{this.createSignalement?.get('image')?.value}}
+                <label class="mb-2">Type de déchet</label>
+                <div class="form-group">
+                  <select class="form-select" formControlName="typeDechet">
+                    <option value="" disabled hidden>Sélectionnez le type de déchet</option>
+                    <option [ngValue]="1">Plastique</option>
+                    <option [ngValue]="2">Verre</option>
+                    <option [ngValue]="3">Métal</option>
+                    <option [ngValue]="4">Papier</option>
+                    <option [ngValue]="5">Organique</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-12 mb-3">
+                <label class="mb-2">Description</label>
+                <div class="form-group">
+                  <textarea class="form-control" placeholder="Description" rows="3" formControlName="description"></textarea>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary btn-block" (click)="validerSignelement()">Valider signalement</button>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <button type="button" routerLink="/Home" class="btn btn-light btn-block">Annuler signalement</button>
+                </div>
+              </div>
+              <img *ngIf="si" [src]="convertArrayBufferToString(si.image)" alt="Image capturée">
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+</div>
+
+
+<!--<form [formGroup]="createSignalement">-->
+<!--  &lt;!&ndash; ... Autres champs de formulaire ... &ndash;&gt;-->
+
+<!--</form>-->
+

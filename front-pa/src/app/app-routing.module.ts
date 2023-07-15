@@ -5,11 +5,15 @@ import { LoginComponent } from './login/login.component';
 import {AppComponent} from "./app.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {SimulationComponent} from "./simulation/simulation.component";
+import {SignalementComponent} from "./signalement/signalement.component";
+import {TriGameComponent} from "./tri-game/tri-game.component";
 
 const routes: Routes = [
    {path: 'Login', component: LoginComponent},
   {path: 'Comparateur', component: SimulationComponent},
   {path: 'Acceuil', component: AppComponent},
+  {path: 'signalement', component: SignalementComponent},
+  {path: 'jeu', component: TriGameComponent},
 
 ];
 

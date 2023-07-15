@@ -1,0 +1,36 @@
+
+<div class="background">
+
+  <div *ngIf="playing == 1">
+    <div class="trash" [ngStyle]="{'background-image' :  'url(' + trashItem?.img_path + ')'}"></div>
+    <div class="poubelle1" (click)="trash(1)"></div>
+    <div class="poubelle2" (click)="trash(2)"></div>
+    <div class="poubelle3" (click)="trash(3)"></div>
+    <div class="poubelle4" (click)="trash(4)" *ngIf="score>=12"></div>
+    <div class="poubelle5" (click)="trash(5)" *ngIf="score>=24"></div>
+    <div class="poubelle6" (click)="trash(6)" *ngIf="score>=36"></div>
+    <div class="score">SCORE : {{score}}</div>
+    <div class="timer">TIMER : {{displayTimer()}}s</div>
+  </div>
+  <div *ngIf="playing == 0">
+    <div class="score">SCORE : {{score}}</div>
+    <div class="timer">TIMER : {{displayTimer()}}s</div>
+    <div class="high-score">HIGH-SCORE : {{score}}</div>
+    <div class="replay" (click)="replay()"></div>
+  </div>
+  <div class="play" *ngIf="playing == -1" (click)="replay()"></div>
+  <div class="leaderboard" *ngIf="playing != -2" (click)="displayLeaderboard()"></div>
+  <div style="height: 100%" *ngIf="playing == -2">
+    <div class="backtogame" (click)="playing=-1"></div>
+    <div class="center_content">
+      <div class="list">
+        <div class="leaderboard-item" *ngFor="let lb of leaderboard; let i = index" [attr.data-index]="i">
+          <div class="medal" [ngStyle]="{'background-image': (i===0)? 'url('+gold+')' : (i===1)? 'url('+silver+')' : (i===2)? 'url('+bronz+')': ''}"></div>
+          <div class="player">{{lb["compte"]}}</div>
+          <div class="highscore">High-Score : {{lb["value"]}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,255 @@
+.trash{
+  z-index: 0;
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-height: 20% !important;
+  aspect-ratio: 1/1 !important;
+  width: 10%;
+  background: white no-repeat center fixed;
+  background-size: contain;
+}
+
+.timer{
+  z-index: 0;
+  position: fixed;
+  top: 20%;
+  left: 75%;
+  transform: translate(-50%, -50%);
+  height: fit-content;
+  width: fit-content;
+  max-width: 30%;
+  background: cyan;
+  color: goldenrod;
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+  line-height:50px;
+  border-left: cyan 5px solid;
+  border-right: cyan 5px solid;
+}
+
+.score{
+  z-index: 0;
+  position: fixed;
+  top: 20%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+  height: fit-content;
+  width: fit-content;
+  max-width: 30%;
+  background: cyan;
+  color: goldenrod;
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+  line-height:50px;
+  border-left: cyan 5px solid;
+  border-right: cyan 5px solid;
+}
+
+.poubelle1{
+  z-index: 0;
+  position: absolute;
+  bottom: 15%;
+  left: 27%;
+  max-height: 50% !important;
+  aspect-ratio: 137/250 !important;
+  width: 10%;
+  background: url(../../assets/tri/Poubelles/verre.png) no-repeat center fixed;
+  background-size: 100% 100%;
+}
+
+.poubelle2{
+  z-index: 0;
+  position: absolute;
+  bottom: 15%;
+  left: 39%;
+  max-height: 50% !important;
+  aspect-ratio: 137/250 !important;
+  width: 10%;
+  background: url(../../assets/tri/Poubelles/plastique.png) no-repeat center fixed;
+  background-size: 100% 100%;
+}
+
+.poubelle3{
+  z-index: 0;
+  position: absolute;
+  bottom: 15%;
+  left: 51%;
+  max-height: 50% !important;
+  aspect-ratio: 136/250 !important;
+  width: 10%;
+  background: url(../../assets/tri/Poubelles/papier.png) no-repeat center fixed;
+  background-size: 100% 100%;
+}
+
+.poubelle4{
+  z-index: 0;
+  position: absolute;
+  bottom: 15%;
+  left: 63%;
+  max-height: 50% !important;
+  aspect-ratio: 136/250 !important;
+  width: 10%;
+  background: url(../../assets/tri/Poubelles/metaux.png) no-repeat center fixed;
+  background-size: 100% 100%;
+}
+
+.poubelle5{
+  z-index: 0;
+  position: absolute;
+  bottom: 15%;
+  left: 15%;
+  max-height: 50% !important;
+  aspect-ratio: 135/250 !important;
+  width: 10%;
+  background: url(../../assets/tri/Poubelles/dechet-organique.png) no-repeat center fixed;
+  background-size: 100% 100%;
+}
+
+.poubelle6{
+  z-index: 0;
+  position: absolute;
+  bottom: 15%;
+  left: 75%;
+  max-height: 50% !important;
+  aspect-ratio: 136/250 !important;
+  width: 10%;
+  background: url(../../assets/tri/Poubelles/appareil-electronique.png) no-repeat center fixed;
+  background-size: 100% 100%;
+}
+
+.high-score{
+  z-index: 0;
+  position: fixed;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: fit-content;
+  width: fit-content;
+  max-width: 30%;
+  background: cyan;
+  color: goldenrod;
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+  line-height:50px;
+  border-left: cyan 5px solid;
+  border-right: cyan 5px solid;
+}
+
+.replay{
+  z-index: 0;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-height: 50% !important;
+  aspect-ratio: 2124/2111 !important;
+  width: 15%;
+  background: url("../../assets/tri/others/ReplayInGame.png") no-repeat center fixed;
+  background-size: contain;
+}
+
+.play{
+  z-index: 0;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-height: 50% !important;
+  aspect-ratio: 439/283 !important;
+  width: 50%;
+  background: url("../../assets/tri/others/PlayGameButton.png") no-repeat center fixed;
+  background-size: contain;
+}
+
+.leaderboard{
+  z-index: 0;
+  position: fixed;
+  top: 15%;
+  left: 7%;
+  transform: translate(-50%, -50%);
+  aspect-ratio: 1/1 !important;
+  width: 10%;
+  background: url("../../assets/tri/others/LeaderBoardButton.png") no-repeat center fixed;
+  background-size: contain;
+  border: solid goldenrod 5px;
+}
+
+.backtogame{
+  z-index: 0;
+  position: fixed;
+  top: 15%;
+  left: 7%;
+  transform: translate(-50%, -50%);
+  aspect-ratio: 1/1 !important;
+  width: 10%;
+  background: url("../../assets/tri/others/backtogame.png") no-repeat center fixed;
+  background-size: contain;
+}
+
+.center_content{
+  justify-content: center;
+  display: flex;
+  height: 100%;
+}
+
+.list{
+  margin-top: 12px;
+  width: 70%;
+  height: 90%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.leaderboard-item{
+  background-color: darkblue;
+  border: goldenrod solid 5px;
+  width: 95%;
+  float : left;
+  margin-left: 2%;
+  margin-top: 1%;
+}
+.medal{
+  float: left;
+  width: 300px;
+  height: 100px;
+  background-size: contain ;
+  background-repeat: no-repeat;
+  margin: 10px;
+}
+.player{
+  float: left;
+  width: auto;
+  font-size: 30px;
+  line-height: 30px;
+  text-align: center;
+  color: goldenrod;
+  font-weight: bold;
+  margin: 10px;
+}
+.highscore{
+  float: right;
+  width: auto;
+  font-size: 30px;
+  line-height: 30px;
+  text-align: center;
+  color: goldenrod;
+  font-weight: bold;
+  margin: 10px;
+}
+
+.background{
+  //z-index: -100;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background: url(../../assets/tri/wall.png) no-repeat center fixed;
+  background-size: 100% 100%;
+}
