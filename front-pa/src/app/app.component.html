@@ -4,8 +4,8 @@
           aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav " *ngIf="!isconneted">
+  <div class="collapse navbar-collapse" id="navbarNavDropdown" >
+    <ul class="navbar-nav " *ngIf="loggedIn">
 
       <li class="nav-item active">
 
@@ -15,9 +15,7 @@
       <!-- <li class="nav-item">
         <a class="nav-link" href="#">Features</a>
       </li> -->
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/Evenements">Mes evenements</a>
-      </li>
+
 
       <li class="nav-item">
         <a class="nav-link" routerLink="/jeu">Jeu de trie de déchet</a>
@@ -29,6 +27,10 @@
 
       <li class="nav-item">
         <a class="nav-link" routerLink="/Comparateur">Comparateur</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/ListeSignalement">Liste De signalement</a>
       </li>
 
 
@@ -45,22 +47,48 @@
 
 
   </div>
-  <div class="mt-1 mr-5">
+<!--  <div class="mt-1 mr-5" *ngIf="loggedIn">-->
 
-    <form class=" d-flex align-items-center mr-5">
-      <input class="form-control  custom-input mx-3 " type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-success mr-3 " type="submit">Rechercher </button>
-    </form>
+<!--    <form class=" d-flex align-items-center mr-5">-->
+<!--      <input class="form-control  custom-input mx-3 " type="search" placeholder="Search" aria-label="Search">-->
+<!--      <button class="btn btn-success mr-3 " type="submit">Rechercher </button>-->
+<!--    </form>-->
 
-  </div>
+<!--  </div>-->
 
-  <div class="connexion mt-2">
+  <div class="connexion mt-2" *ngIf="!loggedIn">
     <ul class="mr-3 ">
       <li class="mr-3">
         <a class="nav-link" routerLink="/Login"><i class="fa fa-sign-in"></i> Se Connecter </a>
       </li>
     </ul>
   </div>
+
+  <div class="connexion mt-2" *ngIf="loggedIn"  >
+<!--    <ul class="mr-3 ">-->
+<!--      <li class="mr-3">-->
+<!--        <a class="nav-link" (click)="deconnected()"><i class="fa fa-sign-out" aria-hidden="true"></i>-->
+<!--          Se déconnecter </a>-->
+<!--      </li>-->
+<!--    </ul>-->
+
+    <div class="user-dropdown" (mouseenter)="showDropdown()" (mouseleave)="hideDropdown()">
+      <div class="user-info">
+        <span class="user-icon" (click)="toggleDropdown()"><i class="fas fa-user"></i></span>
+        <span class="user-name">{{userConneted.user.username}}</span>
+      </div>
+
+
+      <div class="dropdown-content" [ngClass]="{ 'show': isDropdownVisible }">
+        <div (click)="updataUser() " class="update"><i class="fas fa-wrench"></i> Modification</div>
+        <div (click)="deconnected()" class="update"><i class="fas fa-sign-out-alt"  ></i> Déconnexion</div>
+      </div>
+    </div>
+
+
+    </div>
+
+
 
 
 

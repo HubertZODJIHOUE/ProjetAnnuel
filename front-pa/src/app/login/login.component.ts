@@ -6,6 +6,7 @@ import {LoginService} from "../services/login/login.service";
 import {User} from "../Models/User";
 import Swal from 'sweetalert2';
 import {debounceTime, Subject} from "rxjs";
+import {AuthService} from "../services/auth/auth.service";
 
 
 @Component({
@@ -20,9 +21,10 @@ export class LoginComponent implements  OnInit{
   errors:string[]=[]
   error:boolean=false
   private debounceSubject: Subject<string> = new Subject<string>();
+  private errorConnexion: boolean=false;
 
 
-  constructor(private router: Router,  private simulationService : SimulationServiceService, private  loginservice :LoginService){
+  constructor(private router: Router,  private simulationService : SimulationServiceService, private  loginservice :LoginService , private authService: AuthService){
     console.log('on ets passer dans le login ')
     console.log('on ets passer dans le login ')
     console.log('on ets passer dans le login ')
@@ -32,13 +34,16 @@ export class LoginComponent implements  OnInit{
   }
 
 
+  showPassword: boolean = false;
+
+  togglePasswordVisibility(hovered: boolean) {
+    this.showPassword = hovered;
+  }
+
+
   ngOnInit(): void {
 
-   console.log('on ets passer dans le login ')
-   console.log('on ets passer dans le login ')
-   console.log('on ets passer dans le login ')
-   console.log('on ets passer dans le login ')
-   console.log('on ets passer dans le login ')
+
     this.simulationService.getCountiesListe().subscribe(data =>console.table(data));
    // this.loginservice.getAuthenticate(body).subscribe(data =>{this.userConnected= data})
     if(this.password)
@@ -54,51 +59,47 @@ export class LoginComponent implements  OnInit{
   onClickToConnect(){
     this.error=false
     //@TODO remplacer par  le ngmodel
-    console.log(this.username)
-    console.log(this.password)
     //@TODO a decommenter lorsque l'api est activé
      if(this.username && this.password){
        const body ={
         "username": this.username,
         "password": this.password
       }
-      console.log(body)
 
-      this.loginservice.getAuthenticate(body).subscribe(data =>{this.userConnected= data, console.log(data)}, error => {}, ()=>{
-        console.log('@@@@',this.userConnected.user.username)
-        console.log(body.username)
-        console.log(this.userConnected?.username == body.username)
+      this.loginservice.getAuthenticate(body).subscribe(data =>{
+        console.log(data)
+        this.userConnected= data
+        console.log(body)
 
-        if(this.userConnected.user.username== body.username){
-          console.log('je passe de dans ')
-          console.log(this.userConnected)
+        if(this.authService.login(body.username, body.password, this.userConnected)){
+          this.loginservice.updateData(this.userConnected)
+          this.loginservice.user$.subscribe(user=>{
+            console.log(user)
+          })
           Swal.fire(
             'login!',
             'Authentification reussit!',
             'success'
           ).then(result =>{
-            localStorage.setItem('token', this.userConnected.token)
-            this.router.navigate(['/Comparateur'])
+
+            if(this.userConnected)
+              localStorage.setItem('userConnected', JSON.stringify(this.userConnected));
+
+
+            this.router.navigate(['/Acceuil'])
+            window.location.reload();
+            this.ngOnInit()
           })
         }else{
-          this.error= true
+          this.errorConnexion= true
         }
+      }, error => {},
+        ()=>{
+
 
       })
     }
-    //
-    // if(this.username === 'root' && this.password== 'root'){
-    //   this.error=false
-    //   Swal.fire(
-    //     'login!',
-    //     'Authentification reussit!',
-    //     'success'
-    //   ).then(result =>{
-    //     this.router.navigate(['/Comparateur'])
-    //   })
-    // }else{
-    //   this.error= true
-    // }
+
 
   }
 
@@ -144,4 +145,7 @@ export class LoginComponent implements  OnInit{
   }
 
 
+  mdpOublie() {
+    this.router.navigate(['/updatePasseword'])
+  }
 }

@@ -17,3 +17,23 @@
 .valide_border{
   border-color: green;
 }
+
+.password-toggle {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.password-toggle i {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #ccc;
+}
+
+.password-toggle:hover i {
+  color: #000;
+}
+

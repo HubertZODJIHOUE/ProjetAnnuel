@@ -1,12 +1,27 @@
 export interface User{
 
-  nom: string,
-  prenom: string,
-  email: string,
-  username: string,
-  password: string,
-  date_creation?: Date
+  // nom: string,
+  // prenom: string,
+  // email: string,
+  // username: string,
+  // password: string,
+  // date_creation?: Date
+  // role: string
+  date_creation: Date
+  email : string
+
+  id?: number
+
+  nom : string
+
+  password : string
+
+  prenom : string
+
+  username : string
   role: string
+
+
 
 
 }
@@ -17,11 +32,12 @@ export  interface UserLogin{
 
 export  interface  UserCreate{
   token?: string ;
-  nom: string,
-  prenom: string,
-  email: string,
-  username: string,
-  password: string,
-  date_creation?: Date,
-  role: string
+  user:User
+  // nom: string,
+  // prenom: string,
+  // email: string,
+  // username: string,
+  // password: string,
+  // date_creation?: Date,
+  // role: string
 }

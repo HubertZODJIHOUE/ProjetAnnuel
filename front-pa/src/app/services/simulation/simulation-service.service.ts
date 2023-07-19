@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SimulationServiceService {
+  public localUrl = 'http://localhost:3000/'
 
   constructor(private http :HttpClient ) { }
   public apiEcobalyseUrl = 'https://ecobalyse.beta.gouv.fr/api/'
@@ -27,6 +28,11 @@ export class SimulationServiceService {
     return this.http.get<any>('http://localhost:4000/textile/materials')
   }
 
+  getSignalemnet(): Observable<any>{
+    console.log("jfnzdclnddldlsdnlvln")
+    return this.http.get<any>(this.localUrl+'signalement')
+  }
+
 
   // getSimulatorByID(idImpact: string): Observable<any>{
   //   return this.http.get<any>('http://localhost:4000/textile/simulator'+ idImpact)
@@ -36,6 +42,6 @@ export class SimulationServiceService {
     return this.http.get<any>('http://localhost:4000/textile/simulator/detailed')
   }
   createPost(postData: any): Observable<any> {
-    return this.http.post('http://localhost:4000/simulate-textile', postData);
+    return this.http.post('http://localhost:4000/textile/simulator', postData);
   }
 }

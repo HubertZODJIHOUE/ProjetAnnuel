@@ -20,6 +20,7 @@ export class SimulationComponent  implements  OnInit{
   paysDeProvenance: string ='';
   paysTeinture: string ='';
   produit:string = '';
+  result: any
   constructor(private  fb: FormBuilder , private simulationService : SimulationServiceService) {
   }
   ngOnInit(): void {
@@ -29,6 +30,9 @@ export class SimulationComponent  implements  OnInit{
       matiere:['',[]],
       typesimulation:['',[]],
       paysDeProvenance:['',[]],
+      poids:["", ],
+      impact:['',]
+
 
 
     },{validators: this.validFormSearch.bind(this)})
@@ -77,6 +81,7 @@ export class SimulationComponent  implements  OnInit{
   //
   //   })
   // }
+  impact: any;
 
 
 
@@ -113,22 +118,35 @@ export class SimulationComponent  implements  OnInit{
   }
 
   valider() {
+    let mater;
     this.launchSimulation = true
-    // const si ={
-    //   pays:['',[]],
-    //   produit:,
-    //   matiere:,
-    //   typesimulation:,
-    //   paysDeProvenance: this.paysDeProvenance,
-    //
-    // }
+    this.materials.forEach(material=>{
+      if(material.name=== this.simulationForm.get('matiere')?.value){
+        mater= material
+      }
+    })
+    const data ={
+
+      "mass": 88,
+      "materials": [
+        {
+          "id": "lin",
+          "share": 1
+        }
+      ],
+      "product": "jupe",
+      "countrySpinning": "CN",
+      "countryFabric": "CN",
+      "countryDyeing": "FR",
+      "countryMaking": "FR"
+    }
 
   }
 
   testSimulation() {
     const data ={
 
-      "mass": 0.17,
+      "mass": 3,
       "materials": [
       {
         "id": "coton",
@@ -142,6 +160,10 @@ export class SimulationComponent  implements  OnInit{
       "countryMaking": "FR"
     }
 
-    this.simulationService.createPost(data).subscribe(res=>{console.log(res)})
+    this.simulationService.createPost(data).subscribe(res=>{console.log('@@@@@', res), this.result = res})
+  }
+
+  retour() {
+    this.result=null
   }
 }

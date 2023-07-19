@@ -1,5 +1,5 @@
 export interface Signalement{
-  id: number;
+  id?: number;
   utilisateur_id: number,
   date_signalement: Date;
   type_dechet_id: number;

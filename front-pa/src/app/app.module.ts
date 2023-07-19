@@ -11,6 +11,12 @@ import { CreateAccountComponent } from './create-account/create-account.componen
 import { SignalementComponent } from './signalement/signalement.component';
 import { TriGameComponent } from './tri-game/tri-game.component';
 import {CorsInterceptor} from "./cors.interceptor";
+import { AcceuilComponent } from './acceuil/acceuil.component';
+import { ListeSignalementComponent } from './liste-signalement/liste-signalement.component';
+import { UsercomponentComponent } from './dynamicComponent/usercomponent/usercomponent.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
+import { ManagePasswordComponent } from './manage-password/manage-password.component';
+import {AuthInterceptor} from "./auth.interceptor";
 
 
 @NgModule({
@@ -20,7 +26,12 @@ import {CorsInterceptor} from "./cors.interceptor";
     SimulationComponent,
     CreateAccountComponent,
     SignalementComponent,
-    TriGameComponent
+    TriGameComponent,
+    AcceuilComponent,
+    ListeSignalementComponent,
+    UsercomponentComponent,
+    UpdateUserComponent,
+    ManagePasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +41,7 @@ import {CorsInterceptor} from "./cors.interceptor";
     FormsModule,
 
   ],
-  providers: [ { provide: HTTP_INTERCEPTORS, useClass: CorsInterceptor, multi: true }],
+  providers: [ { provide: HTTP_INTERCEPTORS,  useClass:AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

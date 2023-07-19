@@ -1,0 +1,32 @@
+<br>
+<br>
+<br>
+
+<div class='card_cent'*ngFor="let signalement of signalements">
+  <div class="card-list">
+    <div class="card" *ngFor="let item of signalements">
+      <div class="card-header">
+
+      </div>
+      <div class="card-body">
+        <p>Date de signalement: {{item.date_signalement | date: "d/m/Y"}}</p>
+        <p>Type de déchet :
+          {{item.type_dechet_id === 1 ? "Plastique" :
+            item.type_dechet_id === 2 ? "Verre" :
+              item.type_dechet_id === 3 ? "Métal" :
+                item.type_dechet_id === 4 ? "Papier" :
+                  item.type_dechet_id === 5 ? "Organique" : ''}}
+        </p>
+        <p>Localisation: {{item.localisation}}</p>
+        <p>Description: {{item.description}}</p>
+        <p>Status: {{item.status_id=== 1? 'En cours de traitement': 'terminé'}}</p>
+
+
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+

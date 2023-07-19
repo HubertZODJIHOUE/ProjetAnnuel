@@ -34,11 +34,17 @@
                             </div>
                             <label class=" mb-2">Mot de pass</label>
                             <div class="input-group mb-4">
-                                <input  type="password" class="form-control" placeholder="Mot de pass" name="password" [(ngModel)]="password" (ngModelChange)="onInputChange()"[ngClass]="{'valide_border': errors.length===0}">
+                                <input  [type]="showPassword ? 'text' : 'password'" class="form-control" placeholder="Mot de pass" name="password" [(ngModel)]="password" (ngModelChange)="onInputChange()"[ngClass]="{'valide_border': errors.length===0}">
+                              <span class="password-toggle" (mouseenter)="togglePasswordVisibility(true)" (mouseleave)="togglePasswordVisibility(false)">
+                              <i class="fas" [ngClass]="{ 'fa-eye': showPassword, 'fa-eye-slash': !showPassword }"></i></span>
+                              <span class="password-toggle" (mouseenter)="togglePasswordVisibility(true)" (mouseleave)="togglePasswordVisibility(false)">
+                              <i class="fas" [ngClass]="{ 'fa-eye': showPassword, 'fa-eye-slash': !showPassword }"></i></span>
+
                             </div>
-                            <div class="text-danger mb-3" *ngFor="let error of errors">
-                              <div [ngClass]="{'valide': !error}">{{error}}</div>
+                            <div class="text-danger mb-3" *ngFor="let err of errors">
+                              <div [ngClass]="{'valide': !err}">{{err}}</div>
                             </div>
+                            <div *ngIf="error" class="invalid-feedback"> Mot de passe ou nom d'utilisateur invalide</div>
 
 
                             <div class="row">
@@ -47,7 +53,7 @@
                                 </div>
 
                                 <div class="col-6 text-right">
-                                    <button type="button" class="btn btn-link px-0">Mot de passe oublié?</button>
+                                    <button type="button" class="btn btn-link px-0" (click)="mdpOublie()">Mot de passe oublié?</button>
                                 </div>
 
 

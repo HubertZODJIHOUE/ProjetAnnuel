@@ -1,0 +1,138 @@
+<br><br><br>
+<div class="container">
+  <h3>Modification : {{userToUpdate.user.username}}</h3>
+  <form action="#" [formGroup]="updateForm" >
+    <div class="row justify-content-md-center">
+      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+        <div class="login-screen">
+          <div class="login-box">
+            <div class="row gutters">
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                <label class="mb-2">Prénoms</label>
+                <div class="form-group mb-3">
+                  <input type="text" class="form-control" placeholder="Prenoms" formControlName="Prenoms" [ngClass]="{'b_isinvalid':updateForm.get('Prenoms')?.errors?.['required'] && updateForm.get('Prenoms')?.touched}">
+                  <!--                  <div class="invalid-feedback"><span *ngIf="createAcountUser.get('Prenoms').pristine && createAcountUser.get('Prenoms').touched ">Entrez un prénom vaide</span></div>-->
+                </div>
+                <div *ngIf="updateForm.get('Prenoms')?.errors?.['required'] && updateForm.get('Prenoms')?.touched" class="is_invalid">Le prénom est requis.</div>
+              </div>
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                <label class="mb-2">Nom</label>
+                <div class="form-group mb-3">
+                  <input type="text" class="form-control" placeholder="Nom" formControlName="nom" [ngClass]="{'b_isinvalid':updateForm.get('nom')?.errors?.['required'] && updateForm.get('nom')?.touched }">
+
+                  <!--                  <div class="invalid-feedback"><span *ngIf="createAcountUser.get('nom').pristine && createAcountUser.get('nom').touched">Entrez un nom vaide</span></div>-->
+                </div>
+                <div *ngIf="updateForm.get('nom')?.errors?.['required'] && updateForm.get('nom')?.touched" class="is_invalid">Le nom est requis.</div>
+              </div>
+
+
+
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                <label class="mb-2">Email</label>
+                <div class="form-group mb-3 ">
+                  <input type="email" class="form-control" placeholder="email" formControlName="email" [ngClass]="{'b_isinvalid':updateForm.get('email')?.errors?.['required']  && updateForm.get('email')?.touched}">
+                  <!--                         [ngClass]="{'is-invalid': createAcountUser.get('email').errors && createAcountUser.get('email').touched }">-->
+                  <!--                  <div class="invalid-feedback"><span  *ngIf="createAcountUser.get('email').errors && createAcountUser.get('email').touched">Entrez un email vaide</span></div>-->
+                </div>
+                <div *ngIf="updateForm.get('email')?.errors?.['required']  && updateForm.get('email')?.touched" class="is_invalid">Le email est requis.</div>
+              </div>
+
+
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                <label class="mb-2">Nom utilisateur</label>
+                <div class="form-group mb-3 ">
+                  <input type="email" class="form-control" placeholder="Nom utilisateur" formControlName="Username" [ngClass]="{'b_isinvalid':updateForm.get('Username')?.errors?.['required'] && updateForm.get('Username')?.touched }">
+                  <!--                         [ngClass]="{'is-invalid': createAcountUser.get('email').errors && createAcountUser.get('email').touched }">-->
+                  <!--                  <div class="invalid-feedback"><span  *ngIf="createAcountUser.get('email').errors && createAcountUser.get('email').touched">Entrez un email vaide</span></div>-->
+                </div>
+                <div *ngIf="updateForm.get('Username')?.errors?.['required'] && updateForm.get('Username')?.touched" class="is_invalid">Le Nom utilisateur est requis.</div>
+              </div>
+
+
+<!--              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">-->
+<!--                <label class="mb-2">Mot de passe</label>-->
+<!--                <div class="form-group mb-3 ">-->
+<!--                  <input type="password" class="form-control" placeholder="Mot de passe" formControlName="password" [ngClass]="{'b_isinvalid':updateForm.errors}" autocomplete="off">-->
+<!--                  <span class="password-toggle" (mouseenter)="togglePasswordVisibility(true)" (mouseleave)="togglePasswordVisibility(false)">-->
+<!--                              <i class="fas" [ngClass]="{ 'fa-eye': showPassword, 'fa-eye-slash': !showPassword }"></i></span>-->
+<!--                  <span class="password-toggle" (mouseenter)="togglePasswordVisibility(true)" (mouseleave)="togglePasswordVisibility(false)">-->
+<!--                              <i class="fas" [ngClass]="{ 'fa-eye': showPassword, 'fa-eye-slash': !showPassword }"></i></span>-->
+
+
+<!--                  &lt;!&ndash;                         [ngClass]="{'is-invalid':createAcountUser.get('password').pristine && createAcountUser.get('password').touched}">&ndash;&gt;-->
+<!--                  &lt;!&ndash;                  <div class="invalid-feedback"><span  *ngIf="createAcountUser.get('password').pristine && createAcountUser.get('password').touched">Entrez un Mot de passe  valide</span></div>&ndash;&gt;-->
+<!--                </div>-->
+<!--              </div>-->
+
+
+
+<!--              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">-->
+<!--                <label class="mb-2">Confirmer mot de passe</label>-->
+<!--                <div class="form-group mb-3 position-relative">-->
+<!--                  <input type="password" class="form-control" placeholder="Mot de passe" formControlName="confirPassword"-->
+<!--                         [ngClass]="{ 'b_isinvalid': updateForm.errors }" autocomplete="off">-->
+<!--                  <span class="password-toggle" (mouseenter)="togglePasswordVisibility(true)"-->
+<!--                        (mouseleave)="togglePasswordVisibility(false)">-->
+<!--      <i class="fas" [ngClass]="{ 'fa-eye': showPassword, 'fa-eye-slash': !showPassword }"></i>-->
+<!--    </span>-->
+<!--                </div>-->
+<!--              </div>-->
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                <label class="mb-2">Mot de passe</label>
+                <div class="form-group mb-3 position-relative">
+                  <input [type]="showPassword ? 'text' : 'password'" class="form-control" placeholder="Mot de passe" formControlName="password"
+                         [ngClass]="{'b_isinvalid': updateForm.errors}" autocomplete="off">
+                  <span class="password-toggle" (mouseenter)="togglePasswordVisibility(true)"
+                        (mouseleave)="togglePasswordVisibility(false)">
+      <i class="fas" [ngClass]="{ 'fa-eye': showPassword, 'fa-eye-slash': !showPassword }"></i>
+    </span>
+                </div>
+              </div>
+
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                <label class="mb-2">Confirmer mot de passe</label>
+                <div class="form-group mb-3 position-relative">
+                  <input [type]="showPassword ? 'text' : 'password'" class="form-control" placeholder="Confirmer mot de passe" formControlName="confirPassword"
+                         [ngClass]="{ 'b_isinvalid': updateForm.errors }" autocomplete="off">
+                  <span class="password-toggle" (mouseenter)="togglePasswordVisibility(true)"
+                        (mouseleave)="togglePasswordVisibility(false)">
+      <i class="fas" [ngClass]="{ 'fa-eye': showPassword, 'fa-eye-slash': !showPassword }"></i>
+    </span>
+                </div>
+              </div>
+
+
+
+              <div *ngIf=" updateForm.errors?.['erreurMinuscule']"   class="is_invalid">Le mot de passe doit comporter au moins une lettre minuscule.</div>
+              <div *ngIf="updateForm.errors?.['erreurMajuscule']"   class="is_invalid">Le mot de passe doit comporter au moins une lettre majuscule.</div>
+              <div *ngIf=" updateForm.errors?.['erreurChiffre']"   class="is_invalid">Le mot de passe doit comporter au moins un chiffre.</div>
+              <div *ngIf=" updateForm.errors?.['erreureCaracSpeciale']"   class="is_invalid">Le mot de passe doit comporter au moins un caractère spécial parmi '@', '$', '!', '%', '*', '?', '&'.</div>
+              <div *ngIf=" updateForm.errors?.['erreurTaille']"   class="is_invalid">Le mot de passe doit être composé d'au moins 8 caractères.</div>
+              <div *ngIf="updateForm.errors?.['erreurIdentiqueMdp']"   class="is_invalid">Les deux mots de passe doivent etre identique</div>
+
+
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12  mt-3 mb-3" >
+
+                <div class="form-group mb-3 ">
+                  <button type="submit" class="btn btn-primary btn-block col-12 mt-2" (click)="validate() " [disabled]="!updateForm.valid">Valider les modifications</button>
+
+                </div>
+              </div>
+
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mt-3 mb-3">
+
+                <div class="form-group mb-3 ">
+                  <button type="submit" class="btn btn-light btn-block   col-12 mt-2" (click)="refuse()" >Annuler</button>
+
+                </div>
+              </div>
+            </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

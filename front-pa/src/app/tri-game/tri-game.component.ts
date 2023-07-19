@@ -1,6 +1,7 @@
 import {Component, DoCheck, OnInit} from '@angular/core';
 import {TrashService} from "../services/trash/trash.service";
 import {Dechet} from "../Models/Dechet";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 @Component({
   selector: 'app-tri-game',
@@ -12,36 +13,23 @@ export class TriGameComponent implements  DoCheck,OnInit {
   gold = "../../assets/tri/leaderboard/LeaderBoardMedals_1.png";
   silver = "../../assets/tri/leaderboard/LeaderBoardMedals_2.png";
   bronz = "../../assets/tri/leaderboard/LeaderBoardMedals_3.png";
-  leaderboard :any[]=[];
+  leaderboard : any[] = [];
   time: any;
   interval: any;
   playing :any;
   HIGHSCORE :any;
   L1:any; // palier 1
   L2 :any; // palier 2
-  L3: any; // palier 3
-  L4: any; // palier 4
-  score : any;
-  trashItem :any;
-  public trashs: Dechet[]= []
+  L3 :any; // palier 3
+  L4:any; // palier 4
+  score :any;
+  trashItem : any;
   constructor(protected trashService: TrashService) {
     this.trashService = trashService;
-
-    // @TODO balancer le user qui se connecte dans lobservable pour pouvoir recuperer son  id et le fetch avec le hightscore '
   }
   ngOnInit() {
-    this.HIGHSCORE = 0 // TODO : API.READ(this.HIGHSCORE); == read le highscore du joueur actuel avec l'API recupérer
+    this.HIGHSCORE = 0 // TODO : API.READ(this.HIGHSCORE); == read le highscore du joueur actuel avec l'API
     this.playing = -1;
-    this.trashService.getTrash().subscribe(trash=>{
-      this.trashs= trash
-      console.table(this.trashs)
-      if(this.trashs){
-        this.L1 = this.trashs.filter(elem => elem.type <= 3);
-        this.L2 = this.trashs.filter(elem => elem.type <= 4);
-        this.L3 = this.trashs.filter(elem => elem.type <= 5);
-        this.L4 = this.trashs;
-      }
-    })
   }
   ngDoCheck() {
     if (this.time >= 60){
@@ -107,7 +95,7 @@ export class TriGameComponent implements  DoCheck,OnInit {
       return '' + (60-this.time);
     }
   }
-  randomElementOf(list: string | any[]){
+  randomElementOf(list: any){
     return list[Math.floor(Math.random()*list.length)];
   }
   pickRandomTrashItem(){
@@ -128,7 +116,7 @@ export class TriGameComponent implements  DoCheck,OnInit {
     if(this.time >= 60){
       return;
     }
-    if (this.trashItem.type == id){
+    if (this.trashItem.id == id){
       this.score += 1;
     }
     else {
@@ -152,15 +140,14 @@ export class TriGameComponent implements  DoCheck,OnInit {
   replay() {
     this.HIGHSCORE = 0 // TODO : API.READ(this.HIGHSCORE); (COMME POUR ONINIT)
     // this.trashService = new(TrashService);
-    // this.L1 = this.trashService.getL1();
-    // this.L2 = this.trashService.getL2();
-    // this.L3 = this.trashService.getL3();
-    // this.L4 = this.trashService.getL4();
+    this.L1 = this.trashService.getL1();
+    this.L2 = this.trashService.getL2();
+    this.L3 = this.trashService.getL3();
+    this.L4 = this.trashService.getL4();
     this.score = 0;
     this.pickRandomTrashItem();
     this.time = 0;
     this.playing = 1;
     this.startTimer();
   }
-
 }

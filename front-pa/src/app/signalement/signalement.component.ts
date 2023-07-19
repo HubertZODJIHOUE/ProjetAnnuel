@@ -1,6 +1,8 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Signalement} from "../Models/Signalement";
+import {LoginService} from "../services/login/login.service";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 @Component({
   selector: 'app-signalement',
@@ -16,8 +18,9 @@ export class SignalementComponent implements  OnInit {
   selectedOption: number =0
   imaz: string= ""
   si: Signalement | undefined= undefined
+  public localUrl = 'http://localhost:3000/'
 
-  constructor( private fb: FormBuilder) {
+  constructor( private fb: FormBuilder, private  loginservice :LoginService, private http:HttpClient) {
   }
 
   ngOnInit(): void {
@@ -35,7 +38,6 @@ export class SignalementComponent implements  OnInit {
 
   validerSignelement() {
     const signelement : Signalement={
-      id:1,
       utilisateur_id: 1,
       date_signalement: new Date(),
       type_dechet_id: this.createSignalement.get('typeDechet')?.value,
@@ -44,7 +46,41 @@ export class SignalementComponent implements  OnInit {
       status_id: 1,
       image:   this.convertStringToArrayBuffer(this.imaz)
     }
-    this.si= signelement
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    });
+    console.log( headers)
+
+    this.http.post(this.localUrl+ 'signalement', signelement).subscribe(
+      response => {
+        console.log( response)
+      },
+      error => {
+        // Gérer l'erreur
+      }
+    );
+    console.log("je passe dans le signelement")
+
+
+    // const signalement2 :Signalement={
+    //
+    //
+    //     utilisateur_id: 1,
+    //
+    //     type_dechet_id: 1,
+    //
+    //     localisation: "qsdqsdis",
+    //
+    //     description: "Un déchet a été trouvé à cet endroit.",
+    //
+    //     status_id: 1,
+    //
+    //     image: this.convertStringToArrayBuffer(this.imaz)
+    //
+    //
+    // }
+    // this.si= signelement
+    this.loginservice.postSignalement(signelement).subscribe(res=>{console.log("@@@@@@@@",res)})
   }
   convertArrayBufferToString(buffer: ArrayBuffer): string {
     const decoder = new TextDecoder('utf-8');

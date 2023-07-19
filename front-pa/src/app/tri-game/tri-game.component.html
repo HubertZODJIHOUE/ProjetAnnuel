@@ -2,7 +2,7 @@
 <div class="background">
 
   <div *ngIf="playing == 1">
-    <div class="trash" [ngStyle]="{'background-image' :  'url(' + trashItem?.img_path + ')'}"></div>
+    <div class="trash" [ngStyle]="{'background-image' :  'url(' + trashItem['img_path'] + ')'}"></div>
     <div class="poubelle1" (click)="trash(1)"></div>
     <div class="poubelle2" (click)="trash(2)"></div>
     <div class="poubelle3" (click)="trash(3)"></div>

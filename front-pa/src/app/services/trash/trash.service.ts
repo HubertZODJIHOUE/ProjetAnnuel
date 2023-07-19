@@ -18,75 +18,78 @@ export class TrashService {
 
 
   // return this.http.get(`${this.apiUrl}/endpoint`, { headers });
-  getTrash(): Observable<Dechet[]> {
-
-    const headers = new HttpHeaders().set('Authorization', `${this.token}`);
-
-    return this.http.get<Dechet[]>( 'https://91ff-93-26-150-94.ngrok-free.app/dechet',{ headers })
-  }
-
-
-  // trashs = [
-  //   {
-  //     id : 1,
-  //     url : "../../assets/tri/dechets/bouteilleverre1.jpg"
-  //   },
-  //   {
-  //     id : 1,
-  //     url : "../../assets/tri/dechets/fenetre.jpg"
-  //   },
-  //   {
-  //     id : 2,
-  //     url : "../../assets/tri/dechets/bocal.jpg"
-  //   },
-  //   {
-  //     id : 2,
-  //     url : "../../assets/tri/dechets/goblet.jpg"
-  //   },
-  //   {
-  //     id : 3,
-  //     url : "../../assets/tri/dechets/brique-carton.jpg"
-  //   },
-  //   {
-  //     id : 3,
-  //     url : "../../assets/tri/dechets/journal.jpg"
-  //   },
-  //   {
-  //     id : 4,
-  //     url : "../../assets/tri/dechets/canette1.jpg"
-  //   },
-  //   {
-  //     id : 4,
-  //     url : "../../assets/tri/dechets/clous.jpg"
-  //   },
-  //   {
-  //     id : 5,
-  //     url : "../../assets/tri/dechets/orga.jpg"
-  //   },
-  //   {
-  //     id : 5,
-  //     url : "../../assets/tri/dechets/orga.jpg"
-  //   },
-  //   {
-  //     id : 6,
-  //     url : "../../assets/tri/dechets/ampoule1.jpg"
-  //   },
-  //   {
-  //     id : 6,
-  //     url : "../../assets/tri/dechets/ecran.jpg"
-  //   }
-  // ];
-  // public getL1(){
+  // getTrash(): Observable<Dechet[]> {
+  //   console.log(localStorage.getItem('token'))
   //
-  //   return this.trashs.filter(elem => elem.id <= 3);
+  //
+  //   const headers = new HttpHeaders().set('Authorization', `${localStorage.getItem('token')}`);
+  //
+  //   return this.http.get<Dechet[]>( 'https://20a2-93-26-150-94.ngrok-free.app/dechet',{ headers })
   // }
-  // public getL2(){
-  //   return this.trashs.filter(elem => elem.id <= 4);
-  // }
-  // public getL3(){
-  //   return this.trashs.filter(elem => elem.id <= 5);
-  // }
-  // public getL4(){
-  //   return this.trashs;
-  // }
+
+
+
+  trashs = [
+    {
+      id : 1,
+      img_path : "../../assets/tri/dechets/bouteilleverre1.jpg"
+    },
+    {
+      id : 1,
+      img_path : "../../assets/tri/dechets/fenetre.jpg"
+    },
+    {
+      id : 2,
+      img_path : "../../assets/tri/dechets/bocal.jpg"
+    },
+    {
+      id : 2,
+      img_path : "../../assets/tri/dechets/goblet.jpg"
+    },
+    {
+      id : 3,
+      img_path : "../../assets/tri/dechets/brique-carton.jpg"
+    },
+    {
+      id : 3,
+      img_path : "../../assets/tri/dechets/journal.jpg"
+    },
+    {
+      id : 4,
+      img_path : "../../assets/tri/dechets/canette1.jpg"
+    },
+    {
+      id : 4,
+      img_path : "../../assets/tri/dechets/clous.jpg"
+    },
+    {
+      id : 5,
+      img_path : "../../assets/tri/dechets/orga.jpg"
+    },
+    {
+      id : 5,
+      img_path : "../../assets/tri/dechets/orga.jpg"
+    },
+    {
+      id : 6,
+      img_path : "../../assets/tri/dechets/ampoule1.jpg"
+    },
+    {
+      id : 6,
+      img_path : "../../assets/tri/dechets/ecran.jpg"
+    }
+  ];
+  public getL1(){
+
+    return this.trashs.filter(elem => elem.id <= 3);
+  }
+  public getL2(){
+    return this.trashs.filter(elem => elem.id <= 4);
+  }
+  public getL3(){
+    return this.trashs.filter(elem => elem.id <= 5);
+  }
+  public getL4(){
+    return this.trashs;
+  }
 }

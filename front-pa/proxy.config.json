@@ -1,0 +1,7 @@
+{
+  "/api": {
+    "target": "https://20a2-93-26-150-94.ngrok-free.app",
+    "secure": false,
+    "changeOrigin": true
+  }
+}

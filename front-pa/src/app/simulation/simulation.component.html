@@ -6,120 +6,303 @@
 <br>
 <br>
 
+<div *ngIf="!result">
+  <form [formGroup]="simulationForm">
 
-<form [formGroup]="simulationForm">
 
 
+    <div class="container">
+      <div class="row gutters">
 
-  <div class="container">
-    <div class="row gutters">
+        <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="row gutters">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 title">
+                  <h2 class="mb-2 text-primary text-center">Simuler l'mpact carbonne de votre produit</h2>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                  <div class="form-group">
+                    <label>Produit</label>
+                    <select class="form-select" [(ngModel)]="produit"  formControlName="produit">
+                      <option *ngFor="let produit of produits" [value]="produit.id">{{ produit.name}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                  <div class="form-group">
+                    <label >Pays d'origine du tissu </label>
+                    <select class="form-select" [(ngModel)]="paysTeinture"  formControlName="paysTeinture">
+                      <option *ngFor="let pays of lesPays" [value]="pays.code">{{ pays.name}}</option>
+                    </select>
+                  </div>
+                </div>
 
-      <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
-        <div class="card h-100">
-          <div class="card-body">
-            <div class="row gutters">
-              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 title">
-                <h2 class="mb-2 text-primary text-center">Simuler l'mpact carbonne de votre produit</h2>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                  <div class="form-group">
+                    <label >Pays de provenance de la teinture</label>
+                    <select class="form-select" [(ngModel)]="paysDeProvenance"  formControlName="paysDeProvenance">
+                      <option *ngFor="let pays of lesPays" [value]="pays.code">{{ pays.name}}</option>
+                    </select>
+                  </div>
+                </div>
+
+
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                  <div class="form-group">
+                    <label >Pays de provenance de la teinture</label>
+                    <select class="form-select" [(ngModel)]="selectedcountries" formControlName="paysDeProvenance">
+                      <option *ngFor="let pays of lesPays" [value]="pays.code">{{ pays.name}}</option>
+                    </select>
+
+                    <!--                  <label for="paysDeProvenance">Pays de provenance du filage</label>-->
+                    <!--                  <input type="text" class="form-control" id="paysDeProvenance" placeholder="Enter full name"  >-->
+                  </div>
+                </div>
+
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                  <div class="form-group">
+                    <label >Veuillez saisir le poid du produit</label>
+                    <input type="text" class="form-control" id="fullName" placeholder="Enter full name" formControlName="poids" >
+
+                    <!--                  <label for="paysDeProvenance">Pays de provenance du filage</label>-->
+                    <!--                  <input type="text" class="form-control" id="paysDeProvenance" placeholder="Enter full name"  >-->
+                  </div>
+                </div>
+
+                <!--              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">-->
+                <!--                <div class="form-group">-->
+                <!--                  <label for="fullName">Pays de fabrication du produit</label>-->
+                <!--                  <input type="text" class="form-control" id="fullName" placeholder="Enter full name" formControlName="paysFabrication" >-->
+                <!--                </div>-->
+                <!--              </div>-->
+
+
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+
+                  <div class="form-group">
+                    <label >Matière</label>
+                    <label >Pays de provenance de la teinture</label>
+                    <select class="form-select" [(ngModel)]="selectedMaterial" formControlName="matiere">
+                      <option *ngFor="let matiere of materials" [value]="matiere.id">{{ matiere.name}}</option>
+                    </select>
+
+
+                  </div>
+                </div>
+
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+
+                  <div class="form-group">
+
+                    <label >Type d'impacte</label>
+                    <select class="form-select" [(ngModel)]="impact" formControlName="impact">
+                      <option value="" disabled hidden>Sélectionnez le type de déchet</option>
+                      <option value="acd">acidification</option>
+                      <option value="ozd">Appauvrissement couche d'ozone</option>
+                      <option value="cch">Changement climatique</option>
+                      <option value="fru">Utilisation des ressources fossiles</option>
+                      <option value="idu">Utilisation des sols</option>
+                    </select>
+
+
+                  </div>
+                </div>
+
+
               </div>
-              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                <div class="form-group">
-                  <label>Produit</label>
-                  <select class="form-select" [(ngModel)]="produit"  formControlName="produit">
-                    <option *ngFor="let produit of produits" [value]="produit.id">{{ produit.name}}</option>
-                  </select>
+              <div class="row gutters">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                  <div class="text-right">
+                    <button type="button" id="cancel" name="submit"
+                            class="btn btn-lg btn-secondary" (click)="annuler()">Annuler</button>
+
+                    <button type="button"  name="submit" class="btn btn-lg btn-primary btn-rigth" (click)="testSimulation()">soumettre</button>
+                  </div>
                 </div>
               </div>
-              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                <div class="form-group">
-                  <label >Pays d'origine du tissu </label>
-                  <select class="form-select" [(ngModel)]="paysTeinture"  formControlName="paysTeinture">
-                    <option *ngFor="let pays of lesPays" [value]="pays.code">{{ pays.name  }}</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                <div class="form-group">
-                  <label >Pays de provenance de la teinture</label>
-                  <select class="form-select" [(ngModel)]="paysDeProvenance"  formControlName="paysDeProvenance">
-                    <option *ngFor="let pays of lesPays" [value]="pays.code">{{ pays.name  }}</option>
-                  </select>
 
 
-                </div>
-              </div>
-
-
-              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                <div class="form-group">
-                  <label >Pays de provenance de la teinture</label>
-                  <select class="form-select" [(ngModel)]="selectedcountries" formControlName="paysDeProvenance">
-                    <option *ngFor="let pays of lesPays" [value]="pays.code">{{ pays.name  }}</option>
-                  </select>
-
-
-
-<!--                  <label for="paysDeProvenance">Pays de provenance du filage</label>-->
-<!--                  <input type="text" class="form-control" id="paysDeProvenance" placeholder="Enter full name"  >-->
-                </div>
-              </div>
-
-<!--              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">-->
-<!--                <div class="form-group">-->
-<!--                  <label for="fullName">Pays de fabrication du produit</label>-->
-<!--                  <input type="text" class="form-control" id="fullName" placeholder="Enter full name" formControlName="paysFabrication" >-->
-<!--                </div>-->
-<!--              </div>-->
-
-
-              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-
-                <div class="form-group">
-                  <label >Matière</label>
-                  <label >Pays de provenance de la teinture</label>
-                  <select class="form-select" [(ngModel)]="selectedMaterial" formControlName="matiere">
-                    <option *ngFor="let matiere of materials" [value]="matiere.id">{{ matiere.name  }}</option>
-                  </select>
-
-
-                </div>
-              </div>
-
-
-            </div>
-            <div class="row gutters">
-              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                <div class="text-right">
-                  <button type="button" id="cancel" name="submit"
-                          class="btn btn-lg btn-secondary" (click)="annuler()">Annuler</button>
-                  <button type="button" id="submit" name="submit" class="btn btn-lg btn-primary btn-rigth" (click)="valider()">soumettre</button>
-                  <button type="button" id="submit" name="submit" class="btn btn-lg btn-primary btn-rigth" (click)="testSimulation()">soumettre</button>
-                </div>
-              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 resultsimulation" *ngIf="launchSimulation">
-        <div class="card h-100">
-          <div class="card-body">
-            <div class="account-settings">
+        <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 resultsimulation" *ngIf="launchSimulation">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="account-settings">
 
-              <div class="about">
-                <h5>Description du resultat</h5>
-                <p>Le score PEP (Potentiel Écotoxique et Persistant) est un indicateur utilisé dans le domaine de l'écologie pour évaluer l'impact potentiel d'un produit chimique sur l'environnement. Il s'agit d'une mesure qui prend en compte à la fois l'écotoxicité et la persistance d'une substance chimique</p>
+                <div class="about">
+                  <h5>Description du resultat</h5>
+                  <p>Le score PEP (Potentiel Écotoxique et Persistant) est un indicateur utilisé dans le domaine de l'écologie pour évaluer l'impact potentiel d'un produit chimique sur l'environnement. Il s'agit d'une mesure qui prend en compte à la fois l'écotoxicité et la persistance d'une substance chimique</p>
+                </div>
+
+                <div class="user-profile">
+                  <i class="fa fa-refresh fa-spin fa-3x fa-fw"></i>
+                  <span class="sr-only">Loading...</span>
+                </div>
               </div>
 
-              <div class="user-profile">
-                <i class="fa fa-refresh fa-spin fa-3x fa-fw"></i>
-                <span class="sr-only">Loading...</span>
-              </div>
+
             </div>
           </div>
         </div>
       </div>
     </div>
+
+  </form>
+</div>
+
+
+
+<div *ngIf="result">
+  <div class="product-details">
+    <!-- <h2 class="title">Détails du produit</h2>
+
+    <table>
+      <tr>
+        <th>Web URL:</th>
+        <td><a href="{{result?.webUrl}}">{{result.webUrl}}</a></td>
+      </tr>
+    </table> -->
+
+    <h3 class="subtitle">Impacts</h3>
+    <table>
+      <tr>
+        <th>ACD</th>
+        <td>{{result?.impacts.acd}}</td>
+      </tr>
+      <tr>
+        <th>BVI</th>
+        <td>{{result?.impacts.bvi}}</td>
+      </tr>
+      <tr>
+        <th>CCH</th>
+        <td>{{result?.impacts.cch}}</td>
+      </tr>
+      <tr>
+        <th>ETF</th>
+        <td>{{result?.impacts.etf}}</td>
+      </tr>
+      <tr>
+        <th>ETF-C</th>
+        <td>{{result?.impacts.etf}}</td>
+      </tr>
+      <tr>
+        <th>FRU</th>
+        <td>{{result?.impacts.fru}}</td>
+      </tr>
+      <tr>
+        <th>FWE</th>
+        <td>{{result?.impacts.fwe}}</td>
+      </tr>
+      <tr>
+        <th>HTC</th>
+        <td>{{result?.impacts.htc}}</td>
+      </tr>
+      <tr>
+        <th>HTC-C</th>
+        <td>{{result?.impacts.htc}}</td>
+      </tr>
+      <tr>
+        <th>HTN</th>
+        <td>{{result?.impacts.htn}}</td>
+      </tr>
+      <tr>
+        <th>HTN-C</th>
+        <td>{{result?.impacts.htn}}</td>
+      </tr>
+      <tr>
+        <th>IOR</th>
+        <td>{{result?.impacts.ior}}</td>
+      </tr>
+      <tr>
+        <th>LDU</th>
+        <td>{{result?.impacts.ldu}}</td>
+      </tr>
+      <tr>
+        <th>MRU</th>
+        <td>{{result?.impacts.mru}}</td>
+      </tr>
+      <tr>
+        <th>OZD</th>
+        <td>{{result?.impacts.ozd}}</td>
+      </tr>
+      <tr>
+        <th>PCO</th>
+        <td>{{result?.impacts.pco}}</td>
+      </tr>
+      <tr>
+        <th>PMA</th>
+        <td>{{result?.impacts.pma}}</td>
+      </tr>
+      <tr>
+        <th>SWE</th>
+        <td>{{result?.impacts.swe}}</td>
+      </tr>
+      <tr>
+        <th>TRE</th>
+        <td>{{result?.impacts.tre}}</td>
+      </tr>
+      <tr>
+        <th>WTU</th>
+        <td>{{result?.impacts.wtu}}</td>
+      </tr>
+      <tr>
+        <th>ECS</th>
+        <td>{{result?.impacts.ecs}}</td>
+      </tr>
+      <tr>
+        <th>PEF</th>
+        <td>{{result?.impacts.pef}}</td>
+      </tr>
+    </table>
+
+    <h3 class="subtitle">Description</h3>
+    <p class="description">{{result?.description}}</p>
+
+    <h3 class="subtitle">Requête</h3>
+    <table>
+      <tr>
+        <th>Mass</th>
+        <td>{{result?.query.mass}}</td>
+      </tr>
+      <tr>
+        <th>Materials</th>
+        <td>{{result?.query.materials[0].id}}</td>
+        <td>{{result?.query.materials[0].share}}</td>
+      </tr>
+      <tr>
+        <th>Product</th>
+        <td>{{result?.query.product}}</td>
+      </tr>
+      <tr>
+        <th>Country Spinning</th>
+        <td>{{result?.query.countrySpinning}}</td>
+      </tr>
+      <tr>
+        <th>Country Fabric</th>
+        <td>{{result?.query.countryFabric}}</td>
+      </tr>
+      <tr>
+        <th>Country Dyeing</th>
+        <td>{{result?.query.countryDyeing}}</td>
+      </tr>
+      <tr>
+        <th>Country Making</th>
+        <td>{{result?.query.countryMaking}}</td>
+      </tr>
+    </table>
+  </div>
+  <div class="center-button">
+    <button type="button" class="btn btn-success" (click)="retour()">
+      <i class="fas fa-arrow-left"></i> Retour
+    </button>
   </div>
 
-</form>
+</div>
+
+
+
+
+
 
